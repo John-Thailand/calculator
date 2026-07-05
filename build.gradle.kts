@@ -10,6 +10,16 @@ repositories {
   mavenCentral()
 }
 
+dependencies {
+  testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+  testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+// testタスクではJUnit Platform（JUnit5）を使ってください
+tasks.named<Test>("test") {
+  useJUnitPlatform()
+}
+
 // compileJava -> .javaを.classにコンパイルする
 // jar -> .classを.jarにまとめる
 tasks.named<Jar>("jar") {
