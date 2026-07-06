@@ -20,10 +20,19 @@ tasks.named<Test>("test") {
   useJUnitPlatform()
 }
 
+tasks.named<JavaCompile>("compileJava") {
+  options.isVerbose = true
+}
+
+tasks.named<Copy>("processResources") {
+  include("**/*.txt")
+}
+
 // compileJava -> .javaを.classにコンパイルする
 // jar -> .classを.jarにまとめる
 tasks.named<Jar>("jar") {
   manifest {
     attributes["Main-Class"] = "com.example.calculator.Main"
   }
+  archiveFileName.set("calculator-app.jar")
 }
