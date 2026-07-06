@@ -2,7 +2,11 @@
 // compileJava、processResources、jar、testタスクを自動で追加する
 // そしてGradleはJavaプロジェクトとして振る舞う
 plugins {
-  java
+  application
+}
+
+application {
+  mainClass.set("com.example.calculator.Main")
 }
 
 // ライブラリをダウンロードする場所を指定する
