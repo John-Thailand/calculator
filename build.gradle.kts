@@ -3,7 +3,11 @@
 // そしてGradleはJavaプロジェクトとして振る舞う
 plugins {
   application
+  `maven-publish`
 }
+
+group = "com.example"
+version = "1.0.0"
 
 application {
   mainClass.set("com.example.calculator.Main")
@@ -39,4 +43,12 @@ tasks.named<Jar>("jar") {
     attributes["Main-Class"] = "com.example.calculator.Main"
   }
   archiveFileName.set("calculator-app.jar")
+}
+
+publishing {
+  publications {
+    create<MavenPublication>("mavenJava") {
+      from(components["java"])
+    }
+  }
 }
